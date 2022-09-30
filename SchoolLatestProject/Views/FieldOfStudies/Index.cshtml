@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SchoolLatestProject.Models.FieldOfStudy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/SchoolLayout.cshtml";
+}
+
+<div class="col-md-6 col-sm-6 col-6">
+    <div class="btn-group">
+        <button id="addRow" class="btn btn-info">
+            @Html.ActionLink("Add New", "Create") <i class="glyphicon glyphicon-plus"></i>
+        </button>
+    </div>
+</div>
+<div class="form-group" style="margin-top:70px">
+    <div class="panel panel-info">
+        <div class="panel-heading" style="font-size:16px;margin-left:25px"><strong><span></span> All Field Inforamtion</strong></div>
+        <div class="panel-body">
+            <div class="form-horizontal col-sm-12">
+                <table class="table table-striped table-bordered table-hover table-checkable order-column valign-middle"
+                       style="font-size:12px">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.FieldOfStudyID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.FieldOfStudyID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.FieldOfStudyID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+

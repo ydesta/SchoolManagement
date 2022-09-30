@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SchoolLatestProject.Models.Admission>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/SchoolLayout.cshtml";
+}
+
+<div class="col-md-6 col-sm-6 col-6">
+    <div class="btn-group">
+        <button id="addRow" class="btn btn-info">
+            @Html.ActionLink("Add New", "Create") <i class="glyphicon glyphicon-plus"></i>
+        </button>
+    </div>
+</div>
+<div class="form-group" style="margin-top:70px">
+    <div class="panel panel-info">
+        <div class="panel-heading" style="font-size:16px;margin-left:25px"><strong><span></span> All Student Admission Inforamtion</strong></div>
+        <div class="panel-body">
+            <div class="form-horizontal col-sm-12">
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table table-styling  table-bordered table-hover table-checkable order-column valign-middle "
+                               style="font-size:12px">
+                            <tr class="table-primary">
+                                <th>
+                                    @Html.Label("Full Name")
+                                </th>
+                                <th>
+                                    @Html.Label("Academic Year")
+                                </th>
+                                <th>
+                                    @Html.Label("Grade")
+                                </th>
+
+                                <th>@Html.Label("Action")</th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Student.FirstName)
+                                        @Html.DisplayFor(modelItem => item.Student.MiddleName)
+                                        @Html.DisplayFor(modelItem => item.Student.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AcademicYear)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Grade)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.AdmissionId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.AdmissionId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.AdmissionId })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+</div>
+
+

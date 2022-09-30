@@ -1,0 +1,73 @@
+﻿@model SchoolLatestProject.Models.MarkList
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/SchoolLayout.cshtml";
+}
+
+<div class="form-group" style="font-size:15px">
+    <div class="panel panel-info">
+        <div class="panel-heading" style="font-size:18px"><strong><span></span> Mark list Information </strong></div>
+        <div class="panel-body">
+            <div class="form-horizontal col-sm-12">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.Label("Full Name *")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Student.FirstName)
+                        @Html.DisplayFor(model => model.Student.MiddleName)
+                        @Html.DisplayFor(model => model.Student.LastName)
+                    </dd>
+                    <dt>
+                        @Html.Label("CourseName *")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TblCours.CourseName)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Semester *")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Sesmester)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Academic Year *")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AcademicYear)
+                    </dd>
+
+                    <dt>
+                        @Html.Label("Total Mark(100 %) *")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Mark)
+                    </dd>
+
+                </dl>
+
+            </div>
+        </div>
+    </div>
+ </div>
+<p>
+    <div class="btn-group" style="margin-left:150px">
+        <button id="addRow" class="btn btn-grd-info">
+            <i class="glyphicon glyphicon-pencil"></i> @Html.ActionLink("Edit", "Edit", new { id = Model.MarkListID })
+        </button>
+    </div>
+    <div class="btn-group" style="margin-left:0px">
+        <button id="addRow" class="btn btn-grd-success">
+            <i class="glyphicon glyphicon-list"></i> @Html.ActionLink("All Mark List", "Index")
+        </button>
+    </div>
+
+</p>

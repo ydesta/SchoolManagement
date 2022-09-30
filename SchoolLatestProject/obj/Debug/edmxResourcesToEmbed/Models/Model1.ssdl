@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admission">
+    <Key>
+      <PropertyRef Name="AdmissionId" />
+    </Key>
+    <Property Name="AdmissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="AcademicYear" Type="datetime" />
+    <Property Name="Grade" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HeadDepartmentName" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="int" />
+    <Property Name="TotalNoTeachers" Type="int" />
+    <Property Name="DepartmentDetails" Type="varchar(max)" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EducationLevel">
+    <Key>
+      <PropertyRef Name="EducationLevelID" />
+    </Key>
+    <Property Name="EducationLevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="50" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="HireDate" Type="datetime" />
+    <Property Name="EmployeeType" Type="varchar" MaxLength="50" />
+    <Property Name="Nationality" Type="varchar" MaxLength="50" />
+    <Property Name="Religion" Type="varchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+    <Property Name="EducationLevelID" Type="int" />
+    <Property Name="FieldOfStudyID" Type="int" />
+    <Property Name="DepartmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="FieldOfStudy">
+    <Key>
+      <PropertyRef Name="FieldOfStudyID" />
+    </Key>
+    <Property Name="FieldOfStudyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MarkList">
+    <Key>
+      <PropertyRef Name="MarkListID" />
+    </Key>
+    <Property Name="MarkListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="CourseID" Type="int" />
+    <Property Name="Sesmester" Type="varchar" MaxLength="50" />
+    <Property Name="AcademicYear" Type="datetime" />
+    <Property Name="Mark" Type="float" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Grade" Type="int" />
+    <Property Name="Section" Type="varchar" MaxLength="50" />
+    <Property Name="Telephone" Type="int" />
+    <Property Name="ParentFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="ParentmiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="ParentLastName" Type="varchar" MaxLength="50" />
+    <Property Name="ParentTelephone" Type="nchar" MaxLength="10" />
+    <Property Name="Subcity" Type="varchar" MaxLength="50" />
+    <Property Name="Wereda" Type="varchar" MaxLength="50" />
+    <Property Name="Kebelle" Type="varchar" MaxLength="50" />
+    <Property Name="HouseNo" Type="varchar" MaxLength="50" />
+    <Property Name="ImagePhath" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TblCourses">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" />
+    <Property Name="CourseDetails" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_Admission_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Admission" Type="Self.Admission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Admission">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_EducationLevel">
+    <End Role="EducationLevel" Type="Self.EducationLevel" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationLevel">
+        <PropertyRef Name="EducationLevelID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="EducationLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_FieldOfStudy">
+    <End Role="FieldOfStudy" Type="Self.FieldOfStudy" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FieldOfStudy">
+        <PropertyRef Name="FieldOfStudyID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="FieldOfStudyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkList_Course">
+    <End Role="TblCourses" Type="Self.TblCourses" Multiplicity="0..1" />
+    <End Role="MarkList" Type="Self.MarkList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCourses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="MarkList">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkList_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="MarkList" Type="Self.MarkList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="MarkList">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SchoolManagementModelStoreContainer">
+    <EntitySet Name="Admission" EntityType="Self.Admission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationLevel" EntityType="Self.EducationLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FieldOfStudy" EntityType="Self.FieldOfStudy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarkList" EntityType="Self.MarkList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblCourses" EntityType="Self.TblCourses" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Admission_Student" Association="Self.FK_Admission_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Admission" EntitySet="Admission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Department" Association="Self.FK_Employees_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_EducationLevel" Association="Self.FK_Employees_EducationLevel">
+      <End Role="EducationLevel" EntitySet="EducationLevel" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_FieldOfStudy" Association="Self.FK_Employees_FieldOfStudy">
+      <End Role="FieldOfStudy" EntitySet="FieldOfStudy" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkList_Course" Association="Self.FK_MarkList_Course">
+      <End Role="TblCourses" EntitySet="TblCourses" />
+      <End Role="MarkList" EntitySet="MarkList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkList_Student" Association="Self.FK_MarkList_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="MarkList" EntitySet="MarkList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

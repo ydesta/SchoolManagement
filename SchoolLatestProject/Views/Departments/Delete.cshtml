@@ -1,0 +1,83 @@
+﻿@model SchoolLatestProject.Models.Department
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/SchoolLayout.cshtml";
+}
+
+
+
+<h3 style="color:red">Are you sure you want to delete this?</h3>
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group" style="font-size:15px">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-size:18px"><strong><span></span> Delete Department </strong></div>
+                <div class="panel-body">
+                    <div class="form-horizontal col-sm-12">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HeadDepartmentName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HeadDepartmentName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MobileNo)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.MobileNo)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TotalNoTeachers)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TotalNoTeachers)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DepartmentDetails)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DepartmentDetails)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DepartmentName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DepartmentName)
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <div class="btn-group" style="margin-left:150px">
+                <input type="submit" value="Delete" class="btn btn-grd-danger" />
+            </div>
+            <div class="btn-group" style="margin-left:0px">
+                <button id="addRow" class="btn btn-grd-success">
+                    <i class="glyphicon glyphicon-list"></i> @Html.ActionLink("All Department list", "Index")
+                </button>
+            </div>
+        </p>
+       
+
+    }
+
+

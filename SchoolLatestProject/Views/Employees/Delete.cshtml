@@ -1,0 +1,166 @@
+﻿@model SchoolLatestProject.Models.Employee
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/SchoolLayout.cshtml";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+                    @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group" style="font-size:15px">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading" style="font-size:18px"><strong><span></span> Delete Employee </strong></div>
+                                    <div class="panel-body">
+                                        <div class="form-horizontal col-sm-12">
+                                            <dl class="dl-horizontal">
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.UserNo)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.UserNo)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.FirstName)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.FirstName)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.MiddleName)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.MiddleName)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.LastName)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.LastName)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Gender)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Gender)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.DateOfBirth)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Position)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Position)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.MaritalStatus)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.MaritalStatus)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Salary)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Salary)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.HireDate)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.HireDate)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.EmployeeType)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.EmployeeType)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Nationality)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Nationality)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.DisplayNameFor(model => model.Religion)
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Religion)
+                                                </dd>                                              
+
+                                                <dt>
+                                                    @Html.Label("Department Name")
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.Department.DepartmentName)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.Label("Education Level")
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.EducationLevel.Description)
+                                                </dd>
+
+                                                <dt>
+                                                    @Html.Label("Field Of Study")
+                                                </dt>
+
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.FieldOfStudy.Description)
+                                                </dd>
+                                                <dd style="margin-left:500px;margin-top:-300px">
+                                                    <img src="@Url.Content(Model.ImagePath)" width="200" height="200" />
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                <div class="btn-group" style="margin-left:150px">
+                                    <input type="submit" value="Delete" class="btn btn-grd-danger" />                                    
+                                </div>
+                                <div class="btn-group" style="margin-left:0px">
+                                    <button id="addRow" class="btn btn-grd-success">
+                                        <i class="glyphicon glyphicon-list"></i> @Html.ActionLink("All Employee list", "Index")
+                                    </button>
+                                </div>
+                            </p>
+                            
+                        }
+                 
